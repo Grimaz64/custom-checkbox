@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" class="lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6 "> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="lt-ie10 lt-ie9 lt-ie8 ie7"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="lt-ie10 lt-ie9 ie8"> <![endif]-->
+<!--[if IE 9]>         <html lang="en" class="lt-ie10 ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en" class=""> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	
+	<title>EXAMPLE CUSTOM SELECT</title>
+	<meta name="description" content="EXAMPLE CUSTOM SELECT" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+	
+	<link rel="stylesheet" href="customcheckbox.css" />
+	
+	<style>
+		html, body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			overflow: hidden;
+		}
+		
+		#container {
+			padding: 50px;
+		}
+		
+		.label-checkbox {
+			text-transform: none;
+			font-size: 13px;
+			font-weight: 400;
+			line-height: 1.53;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="container">
+		<form action="" method="post">
+		    <input type="checkbox" id="mycheckbox0" value="1" checked="checked" /><label for="mycheckbox0" class="label-checkbox">my label</label>
+		    <br /><br />
+			<input type="checkbox" class="checkbox checkbox-left" name="mycheckbox1" id="mycheckbox1" value="1" /><label for="mycheckbox1" class="label-checkbox">my label</label>
+			<br /><br />
+			<input type="checkbox" class="checkbox checkbox-right" name="mycheckbox2" id="mycheckbox2" value="1" checked="checked" /><label for="mycheckbox2" class="label-checkbox">my label</label>
+			
+			<br /><br />
+			<br /><br />
+			
+			<input type="radio" name="myradio0" id="myradio0a" value="0" /><label for="myradio0a" class="label-checkbox">my label</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<input type="radio" name="myradio0" id="myradio0b" value="0" /><label for="myradio0b" class="label-checkbox">my label</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="radio" name="myradio0" id="myradio0c" value="0" /><label for="myradio0c" class="label-checkbox">my label</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="radio" name="myradio0" id="myradio0d" value="0" /><label for="myradio0d" class="label-checkbox">my label</label>
+			<br /><br />
+			<input type="radio" class="radio radio-left" name="myradio1" id="myradio1a" value="1" /><label for="myradio1a" class="label-checkbox">my label</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<input type="radio" class="radio radio-left" name="myradio1" id="myradio1b" value="1" /><label for="myradio1b" class="label-checkbox">my label</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<input type="radio" class="radio radio-left" name="myradio1" id="myradio1c" value="1" /><label for="myradio1c" class="label-checkbox">my label</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<input type="radio" class="radio radio-left" name="myradio1" id="myradio1d" value="1" /><label for="myradio1d" class="label-checkbox">my label</label>
+			<br /><br />
+			<input type="radio" class="radio radio-right" name="myradio2" id="myradio2a" value="1" /><label for="myradio2a" class="label-checkbox">my label</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<input type="radio" class="radio radio-right" name="myradio2" id="myradio2b" value="1" /><label for="myradio2b" class="label-checkbox">my label</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<input type="radio" class="radio radio-right" name="myradio2" id="myradio2c" value="1" /><label for="myradio2c" class="label-checkbox">my label</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<input type="radio" class="radio radio-right" name="myradio2" id="myradio2d" value="1" /><label for="myradio2d" class="label-checkbox">my label</label>
+		</form>
+	</div>
+	
+	<script src="../../jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			
+			// IE7 :before, :after FIX
+			if ($('html').hasClass('lt-ie8')) {
+				$('.checkbox-left + label, .radio-left + label').each(function() {
+					$('<span class="before"></span>').prependTo($(this));
+				});
+				$('.checkbox-right + label, .radio-right + label').each(function() {
+					$('<span class="after"></span>').appendTo($(this));
+				});
+			}
+
+			// IE7-8 :checked FIX
+			if ($('html').hasClass('lt-ie9')) {
+				$('.checkbox').on('click', function() {
+					$(this).toggleClass('checked')/*.trigger('blur')*/;
+					//$(this).next('label').toggleClass('reflow'); //pour provoquer un reflow !
+				});
+				
+				$('.radio').on('click', function() {
+					$('input[name='+$(this).attr('name')+']').removeClass('checked');
+					$(this).addClass('checked')/*.trigger('blur')*/;
+					//$('input[name='+$(this).attr('name')+']').next('label').toggleClass('reflow'); //pour provoquer un reflow !
+				});
+			}
+		});
+	</script>
+</body>
+</html>

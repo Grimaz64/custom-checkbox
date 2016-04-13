@@ -1,0 +1,67 @@
+.checkbox,
+.radio {
+	position: absolute;
+	clip: rect(0,0,0,0);
+	clip: rect(0 0 0 0);
+	outline: none;
+}
+
+.checkbox-left + label:before,
+.checkbox-left + label .before,
+.checkbox-right + label:after,
+.checkbox-right + label .after {
+	content: '';
+	text-indent: -100px;
+	display: inline-block;
+	height: 17px;
+	width: 17px;
+	margin-right: 8px;
+	background: url(../img/checkbox.gif) no-repeat;
+	vertical-align: text-bottom;
+	cursor: pointer;
+}
+
+.radio-left + label:before,
+.radio-left + label .before,
+.radio-right + label:after,
+.radio-right + label .after {
+	content: '';
+	text-indent: -100px;
+	display: inline-block;
+	height: 17px;
+	width: 17px;
+	margin-right: 8px;
+	background: url(../img/checkbox.gif) no-repeat;
+	vertical-align: text-bottom;
+}
+
+.ie8 .checkbox-left + label:before,
+.ie8 .checkbox-right + label:after,
+.ie8 .radio-left + label:before,
+.ie8 .radio-right + label:after {
+	display: none;
+}
+
+.checkbox-left + label .before,
+.checkbox-left + label:before { margin-right: 8px; background-position: 0 0; }
+.checkbox-right + label .after,
+.checkbox-right + label:after { margin-left: 8px; background-position: 0 0; }
+
+.radio-left + label .before,
+.radio-left + label:before { margin-right: 8px; background-position: 0 0; }
+.radio-right + label .after,
+.radio-right + label:after { margin-left: 8px; background-position: 0 0; }
+
+.checkbox-left:checked + label:before { content: ' '; background-position: -17px 0; } /* add an extra space in content propertie to force repaint on IE8 */
+.checkbox-right:checked + label:after { content: ' '; background-position: -17px 0; }
+.checkbox-left.checked + label:before { content: ' '; background-position: -17px 0; }
+.checkbox-right.checked + label:after { content: ' '; background-position: -17px 0; }
+.checkbox-left.checked + label .before { background-position: -17px 0; }
+.checkbox-right.checked + label .after { background-position: -17px 0; }
+
+.radio-left:checked + label:before { content: ' '; background-position: -17px 0; }
+.radio-right:checked + label:after { content: ' '; background-position: -17px 0; }
+.radio-left.checked + label:before { content: ' '; background-position: -17px 0; }
+.radio-right.checked + label:after { content: ' '; background-position: -17px 0; }
+.radio-left.checked + label .before { background-position: -17px 0; }
+.radio-right.checked + label .after { background-position: -17px 0; }
